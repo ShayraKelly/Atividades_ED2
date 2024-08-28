@@ -1,7 +1,7 @@
-public class NoArvore { // -> cria os nós
-    private int valor; //valor de dentro do nó
-    private NoArvore noDir; //nó do lado direito
-    private NoArvore noEsq; //nó do lado esquerdo
+public class NoArvore { 
+    private int valor; 
+    private NoArvore noDir; 
+    private NoArvore noEsq; 
 
     
     public NoArvore(int valor) {
