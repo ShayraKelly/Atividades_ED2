@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
+        ArvoreBinaria arvore = new ArvoreBinaria();
         Random gerador = new Random();
         int numeroAleatorio = 0;
 
@@ -15,16 +16,15 @@ public class Main {
         System.out.println("===========\n");
 
     System.out.println("Pré-ordem:");
-    ArvoreBinaria.preOrdem(noarvore.getNoArvore());
-    System.out.println("In ordem:");
-    ArvoreBinaria.inOrdem(ArvoreBinaria.getNoArvore());
-    System.out.println("Pós-ordem:");
-    ArvoreBinaria.posOrdem(ArvoreBinaria.getNoArvore());
+    arvore.preOrdem(arvore.getRaiz());
 
-    ArvoreBinaria.remover(NoArvore.getNoRaiz(), valor1);
-    ArvoreBinaria.remover(NoArvore.getNoRaiz(), valor2);
+    System.out.println("In ordem:");
+    arvore.inOrdem(arvore.getRaiz());
+
+    System.out.println("Pós-ordem:");
+    arvore.posOrdem(arvore.getRaiz());
 
     System.out.println("\nApós as remoções:");
-
+    arvore.remover(arvore.getRaiz(), numeroAleatorio);
     }
 }
