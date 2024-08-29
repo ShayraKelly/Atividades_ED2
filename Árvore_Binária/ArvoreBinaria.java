@@ -1,24 +1,24 @@
 public class ArvoreBinaria {
-    private NoArvore noRaiz;
+    private NoArvore raiz;
 
     public ArvoreBinaria() {
-        this.noRaiz = null;
+        this.raiz = null;
     }
 
-    public NoArvore getNoRaiz() {
-        return this.noRaiz;
+    public NoArvore getRaiz() {
+        return this.raiz;
     }
 
-    public void setNoRaiz(int valor) {
-        this.noRaiz = Add_No(this.noRaiz, valor);
+    public void setRaiz(int valor) {
+        this.raiz = addNo(this.raiz, valor);
     }
 
-    private NoArvore Add_No(NoArvore no, int valor){
+    private NoArvore addNo(NoArvore no, int valor){
         if(no != null){
             if(valor < no.getValor()){
-                no.setNoEsq(Add_No(no.getNoEsq(), valor));
+                no.setNoEsq(addNo(no.getNoEsq(), valor));
             }else if(valor > no.getValor()){
-                no.setNoDir(Add_No(no.getNoDir(), valor));
+                no.setNoDir(addNo(no.getNoDir(), valor));
             }
             return no;
         }else{
@@ -73,7 +73,18 @@ public class ArvoreBinaria {
             no.setValor(temp.getValor());
             no.setNoDir(remover(no.getNoDir(), temp.getValor()));
         }
+        NoArvore temp = maximo(no.getNoEsq()); // Encontra o maior valor da subárvore esquerda
+        no.setValor(temp.getValor());
+        no.setNoEsq(remover(no.getNoEsq(), temp.getValor()));
         return no;
+    }
+
+    private NoArvore maximo(NoArvore no) {
+        NoArvore atual = no;
+        while (atual.getNoDir() != null) {
+            atual = atual.getNoDir();
+        }
+        return atual;
     }
 
     private NoArvore minimo(NoArvore no) {
